@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello index{% endblock %}
+
+{% block body %}
+    <h1>Hello index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hello in hellos %}
+            <tr>
+                <td>{{ hello.id }}</td>
+                <td>{{ hello.title }}</td>
+                <td>{{ hello.description }}</td>
+                <td>{{ hello.created|date('d/m/Y') ~ " " ~ hello.createdBy|title }}</td>
+                <td>{{ hello.updated > hello.created ? hello.updated|date('d/m/Y') ~ " " ~ hello.updatedBy|title: '' }}</td>
+                <td>
+                    <a href="{{ path('hello_show', {'id': hello.id}) }}">show</a>
+                    <a href="{{ path('hello_edit', {'id': hello.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('hello_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Bye{% endblock %}
+
+{% block body %}
+    <h1>Edit Bye</h1>
+
+    {{ include('bye/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('bye_index') }}">back to list</a>
+
+    {{ include('bye/_delete_form.html.twig') }}
+{% endblock %}

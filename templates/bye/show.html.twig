@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bye{% endblock %}
+
+{% block body %}
+    <h1>Bye</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ bye.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ bye.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ bye.description }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{{ bye.created ? bye.created|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>CreatedBy</th>
+                <td>{{ bye.createdBy }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedBy</th>
+                <td>{{ bye.updatedBy }}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{{ bye.updated ? bye.updated|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('bye_index') }}">back to list</a>
+
+    <a href="{{ path('bye_edit', {'id': bye.id}) }}">edit</a>
+
+    {{ include('bye/_delete_form.html.twig') }}
+{% endblock %}
